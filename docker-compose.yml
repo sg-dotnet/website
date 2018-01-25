@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  dotnetsingaporeweb:
+    image: dotnetsingaporeweb
+    build:
+      context: .
+      dockerfile: DotnetSingaporeWeb/Dockerfile
+    networks:
+      - socialfeed  
+    ports:
+      - "8080"
+
+  socialfeed:
+    image: socialfeed
+    build:
+      context: .
+      dockerfile: SocialFeed/Dockerfile
+    networks:
+      - socialfeed  
+    ports:
+      - "5000"
+
+networks:    
+  socialfeed:
+    driver: bridge
+

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  dotnetsingaporeweb:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
+  socialfeed:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+

@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+    <title>@ViewData["Title"] - .NET Developers Community @@ Singapore</title>
+
+    <!-- for Facebook -->
+    <meta property="og:title" content="Singapore .NET Developers Community">
+    <meta property="og:description" content="Hello! We are the .NET developers community in Singapore! Join us at our meetups to find out more about Microsoft .NET technology.">
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://dotnet.sg/images/social-network-banner.jpg" />
+    <meta property="og:url" content="http://dotnet.sg/" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" type="image/png" href="http://dotnet.sg/favicon.png" />
+
+</head>
+<body class="landing-page landing-page1">
+    <nav class="navbar navbar-transparent navbar-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
+                <a href="/">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <img src="images/logo.svg" alt="Creative Tim Logo">
+                        </div>
+                        <div class="brand">
+                            .NET Dev Community Singapore
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="example">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="https://www.facebook.com/groups/sg.netdev" target="_blank">
+                            <i class="fa fa-facebook-square"></i>
+                            Discussions
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.meetup.com/NET-Developers-SG" target="_blank">
+                            <i class="fa fa-meetup"></i>
+                            Events
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/sg-dotnet" target="_blank">
+                            <i class="fa fa-github"></i>
+                            Codes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <div class="wrapper">
+        @RenderBody()
+        <footer class="footer">
+            <div class="container">
+                <div class="social-area pull-right">
+                    <a href="https://www.facebook.com/groups/sg.netdev" class="btn btn-social btn-facebook btn-simple" target="_blank">
+                        <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <a href="https://www.meetup.com/NET-Developers-SG" class="btn btn-social btn-meetup btn-simple" target="_blank">
+                        <i class="fa fa-meetup"></i>
+                    </a>
+                    <a href="https://github.com/sg-dotnet" class="btn btn-social btn-github btn-simple" target="_blank">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; 2014 - @DateTime.Now.ToString("yyyy") .NET Developers Community Singapore - <a href="http://www.creative-tim.com" target="_blank">Creative Tim</a>, made with love
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
