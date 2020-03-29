@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Singapore .NET Developers Community</title>
+
+    <!-- for Facebook -->
+    <meta property="og:title" content=".NET Developers Community Singapore">
+    <meta property="og:description" content="Welcome to the .NET Developers Community in Singapore. We invite all of .NET developers to join this community. We organise meetups to share knowledge, code and our enthusiasm for programming in .NET ecosystem.">
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://dotnet.sg/images/facebook-banner.png" />
+    <meta property="og:url" content="https://dotnet.sg" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.png" />
+
+    <link rel="stylesheet" href="~/css/addon.css" />
+    <link rel="stylesheet" href="~/css/winstrap.min.css?0.5.13" />
+    <script src="~/js/jquery.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162010730-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-162010730-1');
+    </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="navbar-local color-accent theme-dark">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="glyph glyph-hamburger"></i>
+                    </button>
+
+                    <a href="/" class="navbar-brand">
+                        <div>
+                            <img src="~/images/logo.png" style="width: 40px; margin-top: -4px;" /> .NET Dev Community Singapore
+                        </div>
+                    </a>
+
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a class="color-type-secondary" href="/">About Us</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Join Us<i class="glyph glyph-chevron-down-2"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="https://www.meetup.com/NET-Developers-SG/" target="_blank">Meetup</a></li>
+                                <li class="divider"></li>
+                                <li><a href="https://www.facebook.com/groups/sg.netdev" target="_blank">Facebook</a></li>
+                                <li><a href="http://linkedin.com/company/dotnet-sg" target="_blank">LinkedIn</a></li>
+                                <li><a href="https://youtube.com/dotnetsg" target="_blank">YouTube</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <a href="#top" class="back-to-top">
+        <i class="glyph glyph-up"></i>
+        <span class="sr-only">Back to top</span>
+    </a>
+    <script src="~/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
