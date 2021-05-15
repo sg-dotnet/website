@@ -1,0 +1,187 @@
+﻿@page "/"
+@inject HttpClient Http
+
+<!-- Banner -->
+<section class="banner full">
+	<article>
+		<div class="inner">
+			<header>
+				<p>Singapore Developers Community</p>
+				<h2>.NET / Azure</h2>
+			</header>
+		</div>
+	</article>
+</section>
+
+<section id="one" class="wrapper style2">
+	<div class="inner">
+		<p>
+			Welcome to .NET Developers Community Singapore and Azure Community Singapore.
+		</p>
+		<p>
+			Hi there,
+		</p>
+		<p>
+			The .NET has been open sourced since November 2014. As community, we would like to share our
+			expertise to others. This group is OPEN FOR ALL developers (Windows, Linux, Mac OS) or for anyone
+			who wants to know or try .NET and Azure. You can meet many of .NET/Azure experts, masters, even
+			Microsoft MVPs in our communities.
+
+		</p>
+
+		<p>
+			If you happen to be a C#, VB.NET, WPF, Windows 10/Windows 10 Mobile, ASP.NET, Web API, SignalR, Microsoft
+			Roslyn C#, Microsoft Azure, server-side, etc. then this family is certainly for you and you should join in.
+			Development using .NET is very exciting, easy and it's open source now.
+		</p>
+
+		<p>
+			We welcome to all developers for the new era of .NET related development and for non .NET
+			developers as well.
+		</p>
+
+		<p>
+			Try .NET. Try Azure.
+		</p>
+
+		<p>
+			Your Friendly Organisers,<br />
+			Riza, Chun Lin, Marvin, Priyanka
+		</p>
+	</div>
+	<div class="inner">
+		<div class="grid-style">
+
+			<div>
+				<div class="box">
+					<div class="image fit">
+						<img src="images/pic02.jpg" alt="" />
+					</div>
+					<div class="content">
+						<header class="align-center">
+							<p>Register Myself</p>
+							<h2>as a speaker</h2>
+						</header>
+						<p>
+							We are constantly looking for anyone interested in presenting on .NET or Azure or just about
+							anything related to developing, supporting, deploying, and enjoying the benefits of
+							.NET / Azure technology.
+						</p>
+						<footer class="align-center">
+							<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAa__ZrLSpxUNjVHMlAwU1JUUVhQNkNUU0VWTThIR1lYNi4u"
+							   target="_blank" class="button alt">Signup as Speaker</a>
+						</footer>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div class="box">
+					<div class="image fit">
+						<img src="images/pic03.jpg" alt="" />
+					</div>
+					<div class="content">
+						<header class="align-center">
+							<p>Volunteer Myself</p>
+							<h2>as a meetup co-organiser</h2>
+						</header>
+						<p>
+							We also need more members joining our event organising team so that we can bring our communities to the next level.
+							As organiser, you can help to define the meetup agenda, network with speakers from not just Singapore but also the whole world.
+						</p>
+						<footer class="align-center">
+							<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAa__ZrLSpxUQlRTWTEzTUJORUVLREtUTVZVTDlaQ1laTy4u"
+							   target="_blank" class="button alt">Signup as Organiser</a>
+						</footer>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<section id="member" class="wrapper style3">
+	<div class="inner">
+		<header class="align-center">
+			<p>A group for people working with .NET / Azure to discuss ideas, issues and share solutions.</p>
+			<h2>Join us as member</h2>
+		</header>
+		<footer class="align-center">
+			<a href="https://www.meetup.com/NET-Developers-SG/" target="_blank" class="button alt">Join .NET Meetup</a>
+			<a href="https://www.meetup.com/AzureSG" target="_blank" class="button alt">Join Azure Meetup</a>
+		</footer>
+	</div>
+</section>
+
+<section id="past-meetups" class="wrapper style2">
+	<div class="inner">
+		<header class="align-center">
+			<p class="special">Following is the list of our</p>
+			<h2>past meetups</h2>
+		</header>
+
+		@{ int count = 0; }
+		@foreach (var videoFeed in videoFeeds)
+        {
+			if (videoFeed.Channel.Name != ".NET Developers Community Singapore")
+			{
+				continue;
+			}
+			else if (count == 5)
+			{
+				break;
+			}
+
+            <div>
+				<header>
+					<h2>
+						@videoFeed.Title
+						<a href="https://www.youtube.com/watch?v=@videoFeed.VideoId" target="_blank" class="icon fa-youtube"><span class="label">Live Streaming</span></a>
+					</h2>
+					<p>@videoFeed.PublishedAt</p>
+				</header>
+				<p>
+					@videoFeed.Description
+				</p>
+			</div>
+
+			<hr />
+
+			count++;
+        }
+
+		<footer class="align-center">
+			<a href="https://www.youtube.com/dotnetsg" target="_blank" class="button alt">More Meetup Recordings...</a>
+		</footer>
+	</div>
+</section>
+
+@code {
+    private List<VideoFeed> videoFeeds = new List<VideoFeed>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var allVideoFeeds = await Http.GetFromJsonAsync<VideoFeed[]>("https://techconnectfeed2020.blob.core.windows.net/feed/videofeed.json");
+
+		videoFeeds = allVideoFeeds.ToList();
+    }
+
+    public class VideoFeed
+    {
+        public string VideoId { get; set; }
+
+        public Channel Channel { get; set; }
+
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTimeOffset PublishedAt { get; set; }
+    }
+
+    public class Channel
+    {
+        public string Name { get; set; }        
+    }
+}
